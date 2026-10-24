@@ -2,7 +2,7 @@
 set -euo pipefail
 
 workflow_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../.." && pwd)
-source "$workflow_dir/entries/lib/alfred_error.sh"
+source "$workflow_dir/entries/lib/alfred_default_error.sh"
 
 if ! result=$("$workflow_dir/template-cli" hello); then
   alfred_default_error
