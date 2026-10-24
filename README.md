@@ -1,15 +1,23 @@
-# Alfred Workflow Bashly Template
+# Alfred Bashly Template
 
 A minimal template that connects a Bashly CLI to an Alfred Script Filter. Type `hello` in Alfred to see **Hello Alfred**.
 
 ## Initial setup
 
-After creating a repository from this template, replace these placeholder names with your own. Check capitalization in each location:
+After creating a repository from this template, use **case-sensitive Replace All** in your editor for each name below. For example, to name the workflow “My Workflow”:
 
-- Repository name and this README title: `alfred-workflow-template-sh` / `Alfred Workflow Bashly Template`
-- CLI name and filename: `template-cli` in `src/bashly.yml`, `script/sync-cli.sh`, and the Alfred entry script
-- Workflow name and bundle ID: `Alfred Bashly Template` and `com.example.alfred-bashly-template` in `alfred_workflow/info.plist`
-- The `hello` keyword, the workflow README title, and the package filename
+| Capitalization | Find | Replace with |
+| --- | --- | --- |
+| Lowercase repository slug | `alfred-workflow-template-sh` | `my-workflow` |
+| Lowercase CLI name | `template-cli` | `my-workflow-cli` |
+| Title case display name | `Alfred Bashly Template` | `My Workflow` |
+| Bundle ID | `com.example.alfred-bashly-template` | `com.example.my-workflow` |
+
+The CLI name appears in `src/bashly.yml`, both sync and package scripts, the Alfred entry script, `.gitignore`, and this README. The display name appears in both READMEs, `alfred_workflow/info.plist`, and the package script. Choose a unique bundle ID for your workflow. Rename the repository directory separately.
+
+If you add other forms of the CLI name, replace each capitalization separately: `TEMPLATE_CLI` → `MY_WORKFLOW_CLI` (all uppercase), `template_cli` → `my_workflow_cli` (all lowercase), `Template-cli` → `My-workflow-cli` (first letter uppercase), and `TemplateCli` → `MyWorkflowCli` (Pascal case). These forms are examples; the current scripts use `template-cli`.
+
+After replacing the names, run `bashly generate` to create the CLI.
 
 Running the workflow requires macOS, [Alfred](https://www.alfredapp.com/) Powerpack, Bash, and `jq`. For example, install `jq` with Homebrew:
 
