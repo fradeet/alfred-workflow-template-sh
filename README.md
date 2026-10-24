@@ -17,44 +17,53 @@ The CLI name appears in `src/bashly.yml`, both sync and package scripts, the Alf
 
 If you add other forms of the CLI name, replace each capitalization separately: `TEMPLATE_CLI` → `MY_WORKFLOW_CLI` (all uppercase), `template_cli` → `my_workflow_cli` (all lowercase), `Template-cli` → `My-workflow-cli` (first letter uppercase), and `TemplateCli` → `MyWorkflowCli` (Pascal case). These forms are examples; the current scripts use `template-cli`.
 
-After replacing the names, run `bashly generate` to create the CLI.
+After replacing the names, follow the development steps below to generate the renamed CLI and update the workflow.
 
-Running the workflow requires macOS, [Alfred](https://www.alfredapp.com/) Powerpack, Bash, and `jq`. For example, install `jq` with Homebrew:
+## Dependencies
 
-```bash
-brew install jq
-```
-
-## Dependencies and installation
-
-Developing the CLI also requires [Bashly](https://bashly.dev/). For example:
-
-```bash
-brew install bashly
-./script/sync-cli.sh
-```
-
-`sync-cli.sh` runs `bashly generate` and copies the generated `template-cli` into `alfred_workflow/`. The installed workflow needs Bash and `jq`; Bashly is only needed during development.
+- Alfred 5 and Powerpack
+- jq
 
 ## Usage
 
-Run `./script/package.sh`, import the resulting `.alfredworkflow` file, and type `hello` in Alfred. See the [workflow README](alfred_workflow/README.md) for usage instructions. You can also try the CLI and entry script directly:
-
-```bash
-./alfred_workflow/template-cli hello
-./alfred_workflow/entries/alfred/hello.sh
-```
+For keywords and instructions inside Alfred, see the [workflow README](alfred_workflow/README.md).
 
 ## Development
 
-Define commands in `src/bashly.yml`, implement them in `src/*_command.sh`, and put shared Bashly functions in `src/lib/`. After making changes, run:
+### Bashly CLI
+
+Install [Bashly](https://bashly.dev/) to generate the CLI while developing. You also need the runtime dependencies listed above:
+
+```bash
+brew install bashly
+```
+
+And generate the CLI to `alfred_workflow/`.
 
 ```bash
 ./script/sync-cli.sh
-./script/sync-readme.sh
-./script/package.sh
 ```
 
-`alfred_workflow/info.plist` configures the Script Filter. It calls `entries/alfred/hello.sh`, which calls the CLI. Run the entry script directly to check its JSON output, or use Alfred's workflow debugger. `package.sh` packages the workflow directory as an importable file.
+### Alfred Workflow
 
-Edit [alfred_workflow/README.md](alfred_workflow/README.md) for Alfred's workflow description, then run the sync script. Packaging also syncs it. Follow the [Alfred Gallery Workflow Style Guide](https://alfred.app/submit/styleguide/) when writing the description. The bundled [Bashly project skill](.agents/skills/bashly/SKILL.md) comes from the [official Bashly AI Kit](https://github.com/bashly-framework/bashly-ai-kit).
+Install the `alfred_workflow` folder as an Alfred workflow using whichever method you prefer.
+
+#### README
+
+Follow the [Alfred Gallery Workflow Style Guide](https://alfred.app/submit/styleguide/) when writing  [alfred_workflow/README.md](alfred_workflow/README.md). Sync it into the workflow's `info.plist` after editing:
+
+```bash
+./script/sync-readme.sh
+```
+
+#### Export Package
+
+Run `./script/package.sh` to create an `alfredworkflow` file.
+
+## References
+
+_Add any references or resources here._
+
+[Alfred Script Filter JSON Format](https://www.alfredapp.com/help/workflows/inputs/script-filter/json/)
+
+[Bashly](https://bashly.dev/)
