@@ -14,5 +14,3 @@ flags:
 commands:
   - name: hello
     help: Output a Hello result for Alfred
-  - name: verbose
-    help: Show the current verbosity level
