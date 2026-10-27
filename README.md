@@ -26,7 +26,18 @@ After replacing the names, follow the development steps below to generate the re
 
 ## Usage
 
+### Alfred Workflow
+
 For keywords and instructions inside Alfred, see the [workflow README](alfred_workflow/README.md).
+
+### CLI
+
+The CLI can use standalone. Use Bashly command to build it.
+
+```bash
+bashly generate
+./template-cli --help
+```
 
 ## Development
 
