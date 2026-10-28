@@ -12,7 +12,7 @@ if [[ $alfred_debug ]]; then
 fi
 
 if ! result=$("$workflow_dir/template-cli" "${other_args[@]}" hello); then
-  alfred_sf_default_error  # Or alfred_json_default_error
+  alfred_sf_default_error  # Or alfred_json_default_error, alfred_text_default_error
   exit 1
 fi
 
